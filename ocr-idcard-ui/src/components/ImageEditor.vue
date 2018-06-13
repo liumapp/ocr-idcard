@@ -18,13 +18,13 @@
         <div id="preview"></div>
       </Row>
       <div>
-        <input type="file" accept="image/png, image/jpeg, image/gif, image/jpg" @change="handleChange1" id="fileinput1" class="fileinput" />
-        <label class="filelabel" for="fileinput1"><Icon type="image"></Icon>&nbsp;选择图片</label>
-        <span><Button @click="handlecrop1" type="primary" icon="crop">裁剪</Button></span>
+        <input type="file" accept="image/png, image/jpeg, image/gif, image/jpg" @change="handleChange" id="fileinput" class="fileinput" />
+        <label class="filelabel" for="fileinput"><Icon type="image"></Icon>&nbsp;选择图片</label>
+        <span><Button @click="handlecrop" type="primary" icon="crop">裁剪</Button></span>
       </div>
-      <Modal v-model="option1.showCropedImage">
+      <Modal v-model="option.showCropedImage">
         <p slot="header">预览裁剪之后的图片</p>
-        <img :src="option1.cropedImg" alt="" v-if="option1.showCropedImage" style="width: 100%;">
+        <img :src="option.cropedImg" alt="" v-if="option.showCropedImage" style="width: 100%;">
       </Modal>
     </Col>
   </Row>
@@ -40,7 +40,7 @@ export default {
     };
   },
   methods: {
-    
+
   },
   mounted () {
     let img = document.getElementById('cropimg');
