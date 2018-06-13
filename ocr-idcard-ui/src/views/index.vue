@@ -17,7 +17,7 @@
 </div>
 </template>
 <script>
-import ImageEditor from '@/components/ImageEditor'
+import ImageEditor from '@/components//image-editor/ImageEditor'
 export default {
   name: 'index',
   components: {

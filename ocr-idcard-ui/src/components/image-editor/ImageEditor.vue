@@ -5,19 +5,22 @@
  * @homepage http://www.liumapp.com
  * @date 6/13/18
  */
+<style lang="less">
+ @import 'ImageEditor.less';
+</style>
 <template>
 <div class="image-editor">
   <Row>
     <Col span="14" class="image-editor-con1">
-      <div>
+      <div class="cropper">
         <img id="cropimg" alt="">
       </div>
     </Col>
-    <Col span="10">
-      <Row type="flex" justify="center" align="middle">
+    <Col span="10" class="image-editor-con1">
+      <Row type="flex" justify="center" align="middle" class="image-editor-con1-preview-con">
         <div id="preview"></div>
       </Row>
-      <div>
+      <div class="image-editor-con1-btn-con">
         <input type="file" accept="image/png, image/jpeg, image/gif, image/jpg" @change="handleChange" id="fileinput" class="fileinput" />
         <label class="filelabel" for="fileinput"><Icon type="image"></Icon>&nbsp;选择图片</label>
         <span><Button @click="handlecrop" type="primary" icon="crop">裁剪</Button></span>
@@ -32,6 +35,7 @@
 </template>
 <script>
 import Cropper from 'cropperjs';
+import './cropper.min.css';
 export default {
   name: 'ImageEditor',
   data () {
@@ -73,7 +77,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less">
-
-</style>
