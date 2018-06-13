@@ -9,7 +9,7 @@
   </parent>
 
   <groupId>com.liumapp.ocr.third.idcard.service</groupId>
-  <artifactId>archetype-service</artifactId>
+  <artifactId>ocr-idcard-service</artifactId>
   <version>v1.0.0</version>
   <packaging>jar</packaging>
 
@@ -19,7 +19,7 @@
     <java.version>1.8</java.version>
   </properties>
 
-  <name>archetype-service</name>
+  <name>ocr-idcard-service</name>
   <url>http://maven.apache.org</url>
 
   <dependencies>

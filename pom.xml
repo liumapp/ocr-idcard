@@ -10,6 +10,6 @@
   <name>ocr-idcard</name>
   <url>http://maven.apache.org</url>
   <modules>
-    <module>archetype-service</module>
+    <module>ocr-idcard-service</module>
   </modules>
 </project>
