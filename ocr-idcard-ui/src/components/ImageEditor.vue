@@ -10,12 +10,12 @@
   <Row>
     <Col span="14">
       <div>
-        <img id="cropimg1" alt="">
+        <img id="cropimg" alt="">
       </div>
     </Col>
     <Col span="10">
       <Row type="flex" justify="center" align="middle">
-        <div id="preview1"></div>
+        <div id="preview"></div>
       </Row>
       <div>
         <input type="file" accept="image/png, image/jpeg, image/gif, image/jpg" @change="handleChange1" id="fileinput1" class="fileinput" />
@@ -31,7 +31,28 @@
 </div>
 </template>
 <script>
+import Cropper from 'cropperjs';
 export default {
-  name: 'ImageEditor'
+  name: 'ImageEditor',
+  data () {
+    return {
+      cropper: {}
+    };
+  },
+  methods: {
+    
+  },
+  mounted () {
+    let img = document.getElementById('cropimg');
+    this.cropper = new Cropper(img, {
+      dragMode: 'move',
+      preview: '#preview',
+      restore: false,
+      center: false,
+      highlight: false,
+      cropBoxMovable: false,
+      toggleDragModeOnDblclick: false
+    });
+  }
 }
 </script>

@@ -15,6 +15,7 @@
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
+    "cropperjs": "^1.2.2",
     "tinymce": "^4.7.4",
     "js-cookie": "^2.2.0",
     "axios": "^0.17.1",
