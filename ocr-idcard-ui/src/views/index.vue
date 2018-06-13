@@ -10,14 +10,18 @@
   <Row>
     <Col span="18" offset="3">
       <Card>
-
+        <image-editor></image-editor>
       </Card>
     </Col>
   </Row>
 </div>
 </template>
 <script>
+import ImageEditor from '@/components/ImageEditor'
 export default {
-  name: 'index'
+  name: 'index',
+  components: {
+    ImageEditor
+  }
 }
 </script>
