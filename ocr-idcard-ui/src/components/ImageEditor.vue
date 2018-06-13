@@ -36,11 +36,28 @@ export default {
   name: 'ImageEditor',
   data () {
     return {
-      cropper: {}
+      cropper: {},
+      option: {
+        showCropedImage: false,
+        cropedImg: ''
+      }
     };
   },
   methods: {
-
+    handleChange (e) {
+      let file = e.target.files[0];
+      let reader = new FileReader();
+      reader.onload = () => {
+        this.cropper.replace(reader.result);
+        reader.onload = null;
+      };
+      reader.readAsDataURL(file);
+    },
+    handlecrop () {
+      let file = this.cropper.getCroppedCanvas().toDataURL();
+      this.option.cropedImg = file;
+      this.option.showCropedImage = true;
+    }
   },
   mounted () {
     let img = document.getElementById('cropimg');
