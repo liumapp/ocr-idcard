@@ -1,5 +1,5 @@
 /**
- * @file index.vue
+ * @file ImageEditor.vue
  * @author liumapp
  * @email liumapp.com@gmail.com
  * @homepage http://www.liumapp.com
@@ -7,17 +7,11 @@
  */
 <template>
 <div>
-  <Row>
-    <Col span="18" offset="3">
-      <Card>
-
-      </Card>
-    </Col>
-  </Row>
+  this is image editor
 </div>
 </template>
 <script>
 export default {
-  name: 'index'
+  name: 'ImageEditor'
 }
 </script>
