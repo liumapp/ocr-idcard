@@ -6,9 +6,9 @@
  * @date 6/13/18
  */
 <template>
-<div>
+<div class="image-editor">
   <Row>
-    <Col span="14">
+    <Col span="14" class="image-editor-con1">
       <div>
         <img id="cropimg" alt="">
       </div>
@@ -73,3 +73,7 @@ export default {
   }
 }
 </script>
+
+<style lang="less">
+
+</style>
