@@ -17,13 +17,14 @@
       </div>
     </Col>
     <Col span="10" class="image-editor-con1">
-      <Row type="flex" justify="center" align="middle" class="image-editor-con1-preview-con">
+      <Row type="flex" justify="center" align="middle" class="image-editor-con1-preview-con" style="margin-left: 5px">
         <div id="preview"></div>
       </Row>
-      <div class="image-editor-con1-btn-con">
+      <div class="image-editor-con1-btn-con" style="margin: 10px 5px">
         <input type="file" accept="image/png, image/jpeg, image/gif, image/jpg" @change="handleChange" id="fileinput" class="fileinput" />
         <label class="filelabel" for="fileinput"><Icon type="image"></Icon>&nbsp;选择图片</label>
-        <span><Button @click="handlecrop" type="primary" icon="crop">裁剪</Button></span>
+        <span><Button @click="handlecrop" type="primary" icon="crop" style="margin-top: -1px">预览</Button></span>
+        <span><Button @click="handSubmit" type="success" icon="crop" style="margin-top: -1px">提交</Button></span>
       </div>
       <Modal v-model="option.showCropedImage">
         <p slot="header">预览裁剪之后的图片</p>
@@ -35,6 +36,7 @@
 </template>
 <script>
 import Cropper from 'cropperjs';
+import util from '@/libs/util';
 import './cropper.min.css';
 export default {
   name: 'ImageEditor',
@@ -61,6 +63,9 @@ export default {
       let file = this.cropper.getCroppedCanvas().toDataURL();
       this.option.cropedImg = file;
       this.option.showCropedImage = true;
+    },
+    handSubmit () {
+//      util.post()
     }
   },
   mounted () {
