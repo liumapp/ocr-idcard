@@ -7,7 +7,27 @@
  */
 <template>
 <div>
-  this is image editor
+  <Row>
+    <Col span="14">
+      <div>
+        <img id="cropimg1" alt="">
+      </div>
+    </Col>
+    <Col span="10">
+      <Row type="flex" justify="center" align="middle">
+        <div id="preview1"></div>
+      </Row>
+      <div>
+        <input type="file" accept="image/png, image/jpeg, image/gif, image/jpg" @change="handleChange1" id="fileinput1" class="fileinput" />
+        <label class="filelabel" for="fileinput1"><Icon type="image"></Icon>&nbsp;选择图片</label>
+        <span><Button @click="handlecrop1" type="primary" icon="crop">裁剪</Button></span>
+      </div>
+      <Modal v-model="option1.showCropedImage">
+        <p slot="header">预览裁剪之后的图片</p>
+        <img :src="option1.cropedImg" alt="" v-if="option1.showCropedImage" style="width: 100%;">
+      </Modal>
+    </Col>
+  </Row>
 </div>
 </template>
 <script>
