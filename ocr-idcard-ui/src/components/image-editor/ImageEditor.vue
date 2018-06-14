@@ -65,6 +65,8 @@ export default {
       this.option.showCropedImage = true;
     },
     handSubmit () {
+      let file = this.cropper.getCroppedCanvas().toDataURL();
+      console.log(file);
 //      util.post()
     }
   },

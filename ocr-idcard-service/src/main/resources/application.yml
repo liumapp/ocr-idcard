@@ -1,2 +1,6 @@
 server:
   port: 2020
+
+liumapp:
+  filemanager:
+    savePath: ./pic/
