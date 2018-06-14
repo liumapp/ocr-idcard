@@ -3,4 +3,4 @@ server:
 
 liumapp:
   filemanager:
-    savePath: ./pic/
+    savePath: /usr/local/tomcat/project/ocr-idcard/ocr-idcard-service/pic/

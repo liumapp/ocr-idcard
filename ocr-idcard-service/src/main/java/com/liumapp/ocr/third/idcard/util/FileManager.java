@@ -2,6 +2,7 @@ package com.liumapp.ocr.third.idcard.util;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
+import sun.misc.BASE64Decoder;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,5 +30,24 @@ public class FileManager {
 
     public void setSavePath(String savePath) {
         this.savePath = savePath;
+    }
+
+    public MultipartFile base64toMultipart (String base64) {
+        try {
+            String[] baseStr = base64.split(",");
+            BASE64Decoder decoder = new BASE64Decoder();
+            byte[] b = new byte[0];
+            b = decoder.decodeBuffer(baseStr[1]);
+
+            for (int i = 0 ; i < b.length ; i++) {
+                if (b[i] < 0) {
+                    b[i] += 256;
+                }
+            }
+            return new Base64File(b, baseStr[0]);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
