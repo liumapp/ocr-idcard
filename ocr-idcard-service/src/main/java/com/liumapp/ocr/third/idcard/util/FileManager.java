@@ -33,6 +33,10 @@ public class FileManager {
     }
 
     public MultipartFile base64toMultipart (String base64) {
+        return this.base64File(base64);
+    }
+
+    public Base64File base64File (String base64) {
         try {
             String[] baseStr = base64.split(",");
             BASE64Decoder decoder = new BASE64Decoder();
@@ -50,4 +54,5 @@ public class FileManager {
             return null;
         }
     }
+
 }

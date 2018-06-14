@@ -4,9 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.liumapp.ocr.third.idcard.entity.IdCard;
 import com.liumapp.ocr.third.idcard.ocr.ali.AliOcr;
+import com.liumapp.ocr.third.idcard.util.Base64File;
 import com.liumapp.ocr.third.idcard.util.FileManager;
 import com.liumapp.ocr.third.idcard.util.HttpUtil;
 import org.apache.http.HttpResponse;
+import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -50,10 +52,10 @@ public class UploadController {
     @RequestMapping("/check")
     public String check (@RequestBody IdCard idCard) {
         try {
-            MultipartFile file = fileManager.base64toMultipart(idCard.getBase64file());
+            Base64File file = fileManager.base64File(idCard.getBase64file());
 
             JSONObject object = new JSONObject();
-            object.put("image", idCard.getBase64file());
+            object.put("image", file.getContent());
             object.put("configure", aliOcr.getJSONConfigure());
             String bodys = object.toJSONString();
 
@@ -68,10 +70,15 @@ public class UploadController {
                     querys,
                     bodys);
 
+            String res = EntityUtils.toString(response.getEntity());
+            JSONObject res_obj = JSON.parseObject(res);
+            System.out.println(res_obj.toJSONString());
+            return JSON.toJSONString(res_obj);
+
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return JSON.toJSONString("success");
     }
 
 }
