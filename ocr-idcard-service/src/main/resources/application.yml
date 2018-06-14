@@ -4,4 +4,8 @@ server:
 liumapp:
   filemanager:
     savePath: /usr/local/tomcat/project/ocr-idcard/ocr-idcard-service/pic/
-
+  ocr:
+    ali:
+      url: http://dm-51.data.aliyun.com/rest/160601/ocr/ocr_idcard.json
+      appKey: 24931248
+      appSecret: bed3a5c5712b01429fece22b37d930aa

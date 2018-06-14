@@ -1,5 +1,6 @@
 package com.liumapp.ocr.third.idcard.config;
 
+import com.liumapp.ocr.third.idcard.ocr.ali.AliOcr;
 import com.liumapp.ocr.third.idcard.util.FileManager;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +18,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class Config extends WebMvcConfigurerAdapter {
 
-	@Override
+    @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**").allowedHeaders("*")
                 .allowedMethods("*")
@@ -28,7 +29,13 @@ public class Config extends WebMvcConfigurerAdapter {
     @Bean
     @ConfigurationProperties(prefix = "liumapp.filemanager")
     public FileManager fileManager () {
-	    return new FileManager();
+        return new FileManager();
+    }
+
+    @Bean
+    @ConfigurationProperties(prefix = "liumapp.ocr.ali")
+    public AliOcr aliOcr () {
+        return new AliOcr();
     }
 
 }

@@ -12,6 +12,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class AliOcr {
 
+    private String appKey;
+
+    private String appSecret;
+
     /**
      * 图片二进制数据的base64编码
      */
@@ -29,7 +33,9 @@ public class AliOcr {
      */
     private String configure;
 
-    public AliOcr(String image, String url, String configure) {
+    public AliOcr(String appKey, String appSecret, String image, String url, String configure) {
+        this.appKey = appKey;
+        this.appSecret = appSecret;
         this.image = image;
         this.url = url;
         this.configure = configure;
@@ -60,5 +66,21 @@ public class AliOcr {
 
     public void setConfigure(String configure) {
         this.configure = configure;
+    }
+
+    public String getAppKey() {
+        return appKey;
+    }
+
+    public void setAppKey(String appKey) {
+        this.appKey = appKey;
+    }
+
+    public String getAppSecret() {
+        return appSecret;
+    }
+
+    public void setAppSecret(String appSecret) {
+        this.appSecret = appSecret;
     }
 }
