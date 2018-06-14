@@ -1,5 +1,8 @@
 package com.liumapp.ocr.third.idcard.config;
 
+import com.liumapp.ocr.third.idcard.util.FileManager;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -20,6 +23,12 @@ public class Config extends WebMvcConfigurerAdapter {
                 .allowedMethods("*")
                 .allowedOrigins("*")
                 .allowCredentials(true);
+    }
+
+    @Bean
+    @ConfigurationProperties(prefix = "liumapp.filemanager")
+    public FileManager fileManager () {
+	    return new FileManager();
     }
 
 }
