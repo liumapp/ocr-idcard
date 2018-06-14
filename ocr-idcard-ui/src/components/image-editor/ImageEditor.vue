@@ -67,9 +67,11 @@ export default {
     handSubmit () {
       let file = this.cropper.getCroppedCanvas().toDataURL();
       console.log(file);
-//      util.post('upload/', file).then (res => {
-//        this.$Message.success('upload success');
-//      });
+      util.post('upload/', {
+        base64file: file
+      }).then (res => {
+        this.$Message.success('upload success');
+      });
     }
   },
   mounted () {
