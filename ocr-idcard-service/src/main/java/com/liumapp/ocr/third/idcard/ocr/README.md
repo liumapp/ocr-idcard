@@ -1,0 +1,2 @@
+kinds of ocr interface 
+

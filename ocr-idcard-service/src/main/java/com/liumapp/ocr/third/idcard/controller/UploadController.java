@@ -35,4 +35,13 @@ public class UploadController {
         return JSON.toJSONString("success");
     }
 
+    @RequestMapping("/check")
+    public String check (@RequestBody IdCard idCard) {
+        try {
+            MultipartFile file = fileManager.base64toMultipart(idCard.getBase64file());
+
+        }
+        return JSON.toJSONString("success");
+    }
+
 }
