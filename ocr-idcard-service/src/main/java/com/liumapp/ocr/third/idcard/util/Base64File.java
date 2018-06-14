@@ -2,9 +2,7 @@ package com.liumapp.ocr.third.idcard.util;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 /**
  * @author liumapp
@@ -34,41 +32,44 @@ public class Base64File implements MultipartFile {
 
     @Override
     public String getName() {
-        return null;
+        // TODO - implementation depends on your requirements
+        return System.currentTimeMillis() + Math.random() + "." + header.split("/")[1];
     }
 
     @Override
     public String getOriginalFilename() {
-        return null;
+        // TODO - implementation depends on your requirements
+        return System.currentTimeMillis() + (int)Math.random() * 10000 + "." + header.split("/")[1];
     }
 
     @Override
     public String getContentType() {
-        return null;
+        // TODO - implementation depends on your requirements
+        return header.split(":")[1];
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return content == null || content.length == 0;
     }
 
     @Override
     public long getSize() {
-        return 0;
+        return content.length;
     }
 
     @Override
     public byte[] getBytes() throws IOException {
-        return new byte[0];
+        return content;
     }
 
     @Override
     public InputStream getInputStream() throws IOException {
-        return null;
+        return new ByteArrayInputStream(content);
     }
 
     @Override
-    public void transferTo(File file) throws IOException, IllegalStateException {
-
+    public void transferTo(File dest) throws IOException, IllegalStateException {
+        new FileOutputStream(dest).write(content);
     }
 }
