@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author liumapp
@@ -49,11 +51,25 @@ public class UploadController {
     public String check (@RequestBody IdCard idCard) {
         try {
             MultipartFile file = fileManager.base64toMultipart(idCard.getBase64file());
+
             JSONObject object = new JSONObject();
             object.put("image", idCard.getBase64file());
             object.put("configure", aliOcr.getJSONConfigure());
-            HttpResponse response = httpUtil.doPost();
+            String bodys = object.toJSONString();
 
+            Map<String, String> headers = new HashMap<String, String>();
+            headers.put("Authorization", "APPCODE " + aliOcr.getAppCode());
+            Map<String, String> querys = new HashMap<String, String>();
+
+            HttpResponse response = httpUtil.doPost(aliOcr.getHost(),
+                    aliOcr.getPath(),
+                    aliOcr.getMethods(),
+                    headers,
+                    querys,
+                    bodys);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return JSON.toJSONString("success");
     }

@@ -20,6 +20,8 @@ public class AliOcr {
 
     private String appSecret;
 
+    private String methods = "POST";
+
     /**
      * 图片二进制数据的base64编码
      */
@@ -36,10 +38,11 @@ public class AliOcr {
      */
     private String configure;
 
-    public AliOcr(String appCode, String appKey, String appSecret, String image, String host, String path, String configure) {
+    public AliOcr(String appCode, String appKey, String appSecret, String methods, String image, String host, String path, String configure) {
         this.appCode = appCode;
         this.appKey = appKey;
         this.appSecret = appSecret;
+        this.methods = methods;
         this.image = image;
         this.host = host;
         this.path = path;
@@ -53,6 +56,14 @@ public class AliOcr {
         JSONObject object = new JSONObject();
         object.put("side", configure);
         return JSON.toJSONString(object);
+    }
+
+    public String getMethods() {
+        return methods;
+    }
+
+    public void setMethods(String methods) {
+        this.methods = methods;
     }
 
     public String getAppCode() {
