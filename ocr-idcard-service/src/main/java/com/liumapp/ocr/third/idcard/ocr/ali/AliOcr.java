@@ -1,5 +1,7 @@
 package com.liumapp.ocr.third.idcard.ocr.ali;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class AliOcr {
 
+    private String appCode;
+
     private String appKey;
 
     private String appSecret;
@@ -21,10 +25,9 @@ public class AliOcr {
      */
     private String image;
 
-    /**
-     * api url
-     */
-    private String url;
+    private String host;
+
+    private String path;
 
     /**
      * json
@@ -33,39 +36,31 @@ public class AliOcr {
      */
     private String configure;
 
-    public AliOcr(String appKey, String appSecret, String image, String url, String configure) {
+    public AliOcr(String appCode, String appKey, String appSecret, String image, String host, String path, String configure) {
+        this.appCode = appCode;
         this.appKey = appKey;
         this.appSecret = appSecret;
         this.image = image;
-        this.url = url;
+        this.host = host;
+        this.path = path;
         this.configure = configure;
     }
 
     public AliOcr() {
     }
 
-    public String getImage() {
-        return image;
+    public String getJSONConfigure () {
+        JSONObject object = new JSONObject();
+        object.put("side", configure);
+        return JSON.toJSONString(object);
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public String getAppCode() {
+        return appCode;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getConfigure() {
-        return configure;
-    }
-
-    public void setConfigure(String configure) {
-        this.configure = configure;
+    public void setAppCode(String appCode) {
+        this.appCode = appCode;
     }
 
     public String getAppKey() {
@@ -82,5 +77,37 @@ public class AliOcr {
 
     public void setAppSecret(String appSecret) {
         this.appSecret = appSecret;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getConfigure() {
+        return configure;
+    }
+
+    public void setConfigure(String configure) {
+        this.configure = configure;
     }
 }
